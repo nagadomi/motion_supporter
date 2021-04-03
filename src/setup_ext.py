@@ -1,18 +1,19 @@
 from setuptools import Extension
 from numpy import get_include   # cimport numpy を使うため
+import os
 
-bezier_path = 'C:/Development/Anaconda3/envs/vmdsizing_cython_exe1/Lib/site-packages/bezier/include'
+bezier_path = '../bezier/src/fortran/include'
 
 kwargs = {"output_dir": "./build/output", "build_dir": "./build/"}
 
 
 def get_ext():
     ext = []
-    sources = ["module\\MMath.pyx", "module\\MOptions.pyx", "module\\MParams.pyx", \
-               "utils\\MLogger.py", "utils\\MBezierUtils.pyx", "utils\\MServiceUtils.pyx", \
-               "mmd\\VmdData.pyx", "mmd\\VmdReader.py", "mmd\\PmxData.pyx", "mmd\\PmxReader.py", \
-               "service\\ConvertMultiSplitService.py", "service\\ConvertMultiJoinService.py", "service\\ConvertParentService.py", \
-               "service\\ConvertLegFKtoIKService.py", "service\\ConvertNoiseService.py", "service\\ConvertSmoothService.py"]
+    sources = [os.path.join("module", "MMath.pyx"), os.path.join("module", "MOptions.pyx"), os.path.join("module", "MParams.pyx"), \
+               os.path.join("utils", "MLogger.py"), os.path.join("utils", "MBezierUtils.pyx"), os.path.join("utils", "MServiceUtils.pyx"), \
+               os.path.join("mmd", "VmdData.pyx"), os.path.join("mmd", "VmdReader.py"), os.path.join("mmd", "PmxData.pyx"), os.path.join("mmd", "PmxReader.py"), \
+               os.path.join("service", "ConvertMultiSplitService.py"), os.path.join("service", "ConvertMultiJoinService.py"), os.path.join("service", "ConvertParentService.py"), \
+               os.path.join("service", "ConvertLegFKtoIKService.py"), os.path.join("service", "ConvertNoiseService.py"), os.path.join("service", "ConvertSmoothService.py")]
     # for path in glob.glob("*/**/*.pyx", recursive=True):
     #     if os.path.isfile(path):
     #         print(path)
@@ -22,7 +23,7 @@ def get_ext():
     #         sources.append(path)
 
     for source in sources:
-        path = source.replace("\\", ".").replace(".pyx", "").replace(".py", "")
+        path = source.replace(os.sep, ".").replace(".pyx", "").replace(".py", "")
         print("%s -> %s" % (source, path))
         ext.append(Extension(path, sources=[source], include_dirs=['.', bezier_path, get_include()], define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]))
     
