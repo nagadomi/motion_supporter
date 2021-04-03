@@ -84,7 +84,7 @@ class BaseFilePickerCtrl():
         # ファイルコントロール
         self.file_sizer = wx.BoxSizer(wx.HORIZONTAL)
 
-        self.file_ctrl = wx.FilePickerCtrl(parent, wx.ID_ANY, wx.EmptyString, message, BaseFilePickerCtrl.WILDCARD_DICT[self.file_type], wx.DefaultPosition, wx.DefaultSize, style)
+        self.file_ctrl = wx.FilePickerCtrl(parent, wx.ID_ANY, wx.EmptyString, message, BaseFilePickerCtrl.WILDCARD_DICT[self.file_type], wx.DefaultPosition, wx.DefaultSize, style|wx.FLP_USE_TEXTCTRL)
         self.file_ctrl.GetPickerCtrl().SetLabel("開く")
         self.file_ctrl.SetToolTip(tooltip)
 
