@@ -5,7 +5,7 @@
 Install dependency libraries
 ```
 sudo apt-get install python3 python3-pip python3-wxgtk4.0 python3-numpy
-pip3 install numpy-quaternion bezier Cython
+pip3 install numpy-quaternion bezier Cython numba
 ```
 
 Clone and Build
