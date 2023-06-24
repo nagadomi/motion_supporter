@@ -91,7 +91,7 @@ class TargetMorphConditionDialog(wx.Dialog):
             wx.ID_ANY,
             wx.DefaultPosition,
             wx.DefaultSize,
-            wx.FULL_REPAINT_ON_RESIZE | wx.HSCROLL | wx.ALWAYS_SHOW_SB,
+            wx.FULL_REPAINT_ON_RESIZE | wx.HSCROLL,
         )
         self.window.SetScrollRate(5, 5)
 
